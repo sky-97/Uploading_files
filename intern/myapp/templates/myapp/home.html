@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="container-fluid">
+    <h2 align='center'>Akash Internship Task</h2>
+    <br>
+    <p>Here in this task, I have created a <strong>Django App</strong> in which users can add files (orders.csv and customers.csv). I have created functionality to join / sort the two csv files which are uploaded.</p>
+    <ul>
+      <li> To Upload the files (orders.csv and customers.csv) click on upload buttons</li>
+      <li> Click on the submit button </li>
+      <li> Click on the join to join the two files and display the output </li>
+      <li> Click on the sort to sort the two files and display the output </li>
+    </ul>
+    <br>
+
+    <div class="row">
+      <div class="col-sm-3 col-md-6 col-lg-4">        
+        <div class="panel panel-default">
+          <div class="panel-heading"><h4 align ='center'>Application</h4></div>
+          <div class="panel-body">
+            <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+              <input type="file" name="myfile" id='files_1' class="btn btn-default"><br>
+              <input type="file" name="myfile_second" id='files_2' class="btn btn-default"><br>
+              <span class="readBytesButtons_1">
+                <button type="submit" class="btn btn-primary center-block">Submit Data</button>
+              </span>
+            </form><br>
+            <button type="button" class="btn btn-success pull-left" data-toggle="modal" data-target="#join">
+            Join Data
+            </button>
+            <button type="button" class="btn btn-success pull-right" data-toggle="modal" data-target="#sort">
+            Sort Data
+            </button>
+          </div>
+        </div>        
+      </div>
+<!-- 
+    <div class="container">
+      <h2>App</h2>
+      <div class="panel panel-default">
+        <div class="panel-heading">Panel Heading</div>
+        <div class="panel-body"></div>
+      </div>
+    </div> -->
+
+
+<!--       <div class="col-sm-9 col-md-6 col-lg-8" style="background-color:pink;">
+        <div class="msg"></div>
+        <p id='demo'></p>
+
+      </div> -->
+    </div>
+  </div>
+  </div>
+
+  <div>
+<!--     <h3> Orders file</h3>
+      {% autoescape off %}{{ orders }}{% endautoescape %}
+    <br><br>
+    <h3>Customers file</h3>
+      {% autoescape off %}{{ customers }}{% endautoescape %}
+    <h3>Sorted Dataframe</h3>
+    {% autoescape off %}{{ sort }}{% endautoescape %}
+    <br>
+    <h3>Joined Dataframe</h3>
+    {% autoescape off %}{{ join }}{% endautoescape %}
+  </div> -->
+
+  <div class="modal fade" id="join" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Joined Dataframe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% autoescape off %}{{ join }}{% endautoescape %}        
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="modal fade" id="sort" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Sorted Dataframe</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% autoescape off %}{{ sort }}{% endautoescape %}        
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
